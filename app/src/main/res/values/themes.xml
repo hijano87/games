@@ -27,5 +27,18 @@
         <item name="colorOnSurfaceInverse">@color/md_theme_light_inverseOnSurface</item>
         <item name="colorSurfaceInverse">@color/md_theme_light_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_light_primaryInverse</item>
+
+        <item name="textAppearanceDisplayLarge">@style/TextAppearance.Games.DisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/TextAppearance.Games.DisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/TextAppearance.Games.DisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.Games.HeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.Games.HeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.Games.HeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.Games.TitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.Games.TitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/TextAppearance.Games.TitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.Games.BodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.Games.BodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.Games.BodySmall</item>
     </style>
 </resources>

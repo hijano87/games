@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Display -->
+    <style name="TextAppearance.Games.DisplayLarge" parent="TextAppearance.Material3.DisplayLarge">
+        <item name="android:fontFamily">@font/noto_sans</item>
+    </style>
+    <style name="TextAppearance.Games.DisplayMedium" parent="TextAppearance.Material3.DisplayMedium">
+        <item name="android:fontFamily">@font/noto_sans</item>
+    </style>
+    <style name="TextAppearance.Games.DisplaySmall" parent="TextAppearance.Material3.DisplaySmall">
+        <item name="android:fontFamily">@font/noto_sans</item>
+    </style>
+
+    <!-- Headline -->
+    <style name="TextAppearance.Games.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:fontFamily">@font/noto_sans</item>
+    </style>
+    <style name="TextAppearance.Games.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:fontFamily">@font/noto_sans</item>
+    </style>
+    <style name="TextAppearance.Games.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:fontFamily">@font/noto_sans</item>
+    </style>
+
+    <!-- Title -->
+    <style name="TextAppearance.Games.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:fontFamily">@font/noto_sans</item>
+    </style>
+    <style name="TextAppearance.Games.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:fontFamily">@font/noto_sans</item>
+    </style>
+    <style name="TextAppearance.Games.TitleSmall" parent="TextAppearance.Material3.TitleSmall">
+        <item name="android:fontFamily">@font/noto_sans</item>
+    </style>
+
+    <!-- Body -->
+    <style name="TextAppearance.Games.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:fontFamily">@font/noto_sans</item>
+    </style>
+    <style name="TextAppearance.Games.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:fontFamily">@font/noto_sans</item>
+    </style>
+    <style name="TextAppearance.Games.BodySmall" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:fontFamily">@font/noto_sans</item>
+    </style>
+
+    <!-- Label -->
+    <style name="TextAppearance.Games.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:fontFamily">@font/noto_sans</item>
+    </style>
+    <style name="TextAppearance.Games.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:fontFamily">@font/noto_sans</item>
+    </style>
+    <style name="TextAppearance.Games.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:fontFamily">@font/noto_sans</item>
+    </style>
+
+</resources>
