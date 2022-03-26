@@ -10,6 +10,7 @@ object Versions {
     const val KOTLIN = "1.6.0"
 
     const val APP_COMPAT = "1.4.1"
+    const val CONSTRAINT_LAYOUT = "2.1.3"
     const val CORE_KTX = "1.7.0"
     const val MATERIAL = "1.5.0"
 }

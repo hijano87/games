@@ -33,6 +33,7 @@ android {
 
 dependencies {
     implementation("${Libs.APP_COMPAT}:${Versions.APP_COMPAT}")
+    implementation("${Libs.CONSTRAINT_LAYOUT}:${Versions.CONSTRAINT_LAYOUT}")
     implementation("${Libs.CORE_KTX}:${Versions.CORE_KTX}")
     implementation("${Libs.MATERIAL}:${Versions.MATERIAL}")
 }
