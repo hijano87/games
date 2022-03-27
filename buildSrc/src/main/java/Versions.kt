@@ -22,4 +22,6 @@ object Versions {
     const val LOGGING_INTERCEPTOR = "4.9.3"
     const val MOSHI = "1.13.0"
     const val RETROFIT = "2.9.0"
+
+    const val IGDB_API_JVM = "1.0.5"
 }

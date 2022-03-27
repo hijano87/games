@@ -17,4 +17,6 @@ object Libs {
     const val MOSHI_KOTLIN = "com.squareup.moshi:moshi-kotlin"
     const val MOSHI_KOTLIN_CODEGEN = "com.squareup.moshi:moshi-kotlin-codegen"
     const val LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor"
+
+    const val IGDB_API_JVM = "com.github.husnjak:IGDB-API-JVM"
 }

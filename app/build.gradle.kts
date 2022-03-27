@@ -71,4 +71,6 @@ dependencies {
     implementation("${Libs.MOSHI_KOTLIN}:${Versions.MOSHI}")
     kapt("${Libs.MOSHI_KOTLIN_CODEGEN}:${Versions.MOSHI}")
     implementation("${Libs.LOGGING_INTERCEPTOR}:${Versions.LOGGING_INTERCEPTOR}")
+
+    implementation("${Libs.IGDB_API_JVM}:${Versions.IGDB_API_JVM}")
 }
