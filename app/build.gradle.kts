@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -17,6 +19,18 @@ android {
         versionName = Versions.VERSION_NAME
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", "\"https://api.igdb.com/\"")
+        buildConfigField(
+            "String",
+            "CLIENT_ID",
+            "\"${gradleLocalProperties(rootDir)["clientId"]}\""
+        )
+        buildConfigField(
+            "String",
+            "BEARER_TOKEN",
+            "\"${gradleLocalProperties(rootDir)["bearerToken"]}\""
+        )
     }
 
     buildTypes {
@@ -38,6 +52,7 @@ android {
 }
 
 dependencies {
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation("${Libs.APP_COMPAT}:${Versions.APP_COMPAT}")
     implementation("${Libs.CONSTRAINT_LAYOUT}:${Versions.CONSTRAINT_LAYOUT}")
     implementation("${Libs.CORE_KTX}:${Versions.CORE_KTX}")
@@ -49,4 +64,11 @@ dependencies {
     implementation("${Libs.NAVIGATION_FRAGMENT_KTX}:${Versions.NAVIGATION}")
     implementation("${Libs.NAVIGATION_UI_KTX}:${Versions.NAVIGATION}")
     implementation("${Libs.RECYCLER_VIEW}:${Versions.RECYCLER_VIEW}")
+
+    implementation("${Libs.RETROFIT}:${Versions.RETROFIT}")
+    implementation("${Libs.CONVERTER_SCALARS}:${Versions.RETROFIT}")
+    implementation("${Libs.CONVERTER_MOSHI}:${Versions.RETROFIT}")
+    implementation("${Libs.MOSHI_KOTLIN}:${Versions.MOSHI}")
+    kapt("${Libs.MOSHI_KOTLIN_CODEGEN}:${Versions.MOSHI}")
+    implementation("${Libs.LOGGING_INTERCEPTOR}:${Versions.LOGGING_INTERCEPTOR}")
 }

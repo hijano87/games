@@ -18,4 +18,8 @@ object Versions {
     const val MATERIAL = "1.5.0"
     const val NAVIGATION = "2.4.1"
     const val RECYCLER_VIEW = "1.2.1"
+
+    const val LOGGING_INTERCEPTOR = "4.9.3"
+    const val MOSHI = "1.13.0"
+    const val RETROFIT = "2.9.0"
 }

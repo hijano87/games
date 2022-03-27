@@ -10,4 +10,11 @@ object Libs {
     const val NAVIGATION_FRAGMENT_KTX = "androidx.navigation:navigation-fragment-ktx"
     const val NAVIGATION_UI_KTX = "androidx.navigation:navigation-ui-ktx"
     const val RECYCLER_VIEW = "androidx.recyclerview:recyclerview"
+
+    const val RETROFIT = "com.squareup.retrofit2:retrofit"
+    const val CONVERTER_SCALARS = "com.squareup.retrofit2:converter-scalars"
+    const val CONVERTER_MOSHI = "com.squareup.retrofit2:converter-moshi"
+    const val MOSHI_KOTLIN = "com.squareup.moshi:moshi-kotlin"
+    const val MOSHI_KOTLIN_CODEGEN = "com.squareup.moshi:moshi-kotlin-codegen"
+    const val LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor"
 }
