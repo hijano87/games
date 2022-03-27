@@ -1,4 +1,4 @@
-package com.hijano.games
+package com.hijano.games.ui
 
 import android.os.Bundle
 import android.view.View
@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.hijano.games.R
 import com.hijano.games.databinding.FragmentGamesBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

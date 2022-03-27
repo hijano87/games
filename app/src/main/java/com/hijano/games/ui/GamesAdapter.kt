@@ -1,4 +1,4 @@
-package com.hijano.games
+package com.hijano.games.ui
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil

@@ -1,6 +1,7 @@
-package com.hijano.games
+package com.hijano.games.ui
 
 import androidx.appcompat.app.AppCompatActivity
+import com.hijano.games.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

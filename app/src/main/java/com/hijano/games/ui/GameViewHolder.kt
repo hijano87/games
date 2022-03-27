@@ -1,4 +1,4 @@
-package com.hijano.games
+package com.hijano.games.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
