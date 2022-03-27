@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -36,4 +37,6 @@ dependencies {
     implementation("${Libs.CONSTRAINT_LAYOUT}:${Versions.CONSTRAINT_LAYOUT}")
     implementation("${Libs.CORE_KTX}:${Versions.CORE_KTX}")
     implementation("${Libs.MATERIAL}:${Versions.MATERIAL}")
+    implementation("${Libs.NAVIGATION_FRAGMENT_KTX}:${Versions.NAVIGATION}")
+    implementation("${Libs.NAVIGATION_UI_KTX}:${Versions.NAVIGATION}")
 }
