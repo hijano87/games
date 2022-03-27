@@ -3,8 +3,9 @@ package com.hijano.games.data
 import com.hijano.games.model.Game
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class GamesRepository {
+class GamesRepository @Inject constructor() {
     fun getGames(): Flow<List<Game>> = flow {
         emit(
             listOf(

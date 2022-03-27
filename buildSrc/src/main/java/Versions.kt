@@ -13,6 +13,7 @@ object Versions {
     const val CONSTRAINT_LAYOUT = "2.1.3"
     const val CORE_KTX = "1.7.0"
     const val COROUTINES = "1.6.0"
+    const val HILT = "2.41"
     const val LIFECYCLE = "2.4.1"
     const val MATERIAL = "1.5.0"
     const val NAVIGATION = "2.4.1"

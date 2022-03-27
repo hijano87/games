@@ -3,6 +3,8 @@ object Libs {
     const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout"
     const val CORE_KTX = "androidx.core:core-ktx"
     const val COROUTINES_ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android"
+    const val HILT_ANDROID = "com.google.dagger:hilt-android"
+    const val HILT_COMPILER = "com.google.dagger:hilt-compiler"
     const val LIFECYCLE_RUNTIME_KTX = "androidx.lifecycle:lifecycle-runtime-ktx"
     const val MATERIAL = "com.google.android.material:material"
     const val NAVIGATION_FRAGMENT_KTX = "androidx.navigation:navigation-fragment-ktx"
