@@ -12,6 +12,10 @@ object Libs {
     const val NAVIGATION_FRAGMENT_KTX = "androidx.navigation:navigation-fragment-ktx"
     const val NAVIGATION_UI_KTX = "androidx.navigation:navigation-ui-ktx"
     const val RECYCLER_VIEW = "androidx.recyclerview:recyclerview"
+    const val ROOM = "androidx.room:room-runtime"
+    const val ROOM_COMPILER = "androidx.room:room-compiler"
+    const val ROOM_KTX = "androidx.room:room-ktx"
+    const val ROOM_PAGING = "androidx.room:room-paging"
 
     const val RETROFIT = "com.squareup.retrofit2:retrofit"
     const val CONVERTER_SCALARS = "com.squareup.retrofit2:converter-scalars"

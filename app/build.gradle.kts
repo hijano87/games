@@ -67,6 +67,11 @@ dependencies {
     implementation("${Libs.NAVIGATION_UI_KTX}:${Versions.NAVIGATION}")
     implementation("${Libs.RECYCLER_VIEW}:${Versions.RECYCLER_VIEW}")
 
+    implementation("${Libs.ROOM}:${Versions.ROOM}")
+    kapt("${Libs.ROOM_COMPILER}:${Versions.ROOM}")
+    implementation("${Libs.ROOM_KTX}:${Versions.ROOM}")
+    implementation("${Libs.ROOM_PAGING}:${Versions.ROOM}")
+
     implementation("${Libs.RETROFIT}:${Versions.RETROFIT}")
     implementation("${Libs.CONVERTER_SCALARS}:${Versions.RETROFIT}")
     implementation("${Libs.CONVERTER_MOSHI}:${Versions.RETROFIT}")
