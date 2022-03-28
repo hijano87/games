@@ -65,6 +65,7 @@ dependencies {
     implementation("${Libs.MATERIAL}:${Versions.MATERIAL}")
     implementation("${Libs.NAVIGATION_FRAGMENT_KTX}:${Versions.NAVIGATION}")
     implementation("${Libs.NAVIGATION_UI_KTX}:${Versions.NAVIGATION}")
+    implementation("${Libs.PAGING}:${Versions.PAGING}")
     implementation("${Libs.RECYCLER_VIEW}:${Versions.RECYCLER_VIEW}")
 
     implementation("${Libs.ROOM}:${Versions.ROOM}")

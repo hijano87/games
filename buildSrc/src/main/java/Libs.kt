@@ -11,6 +11,7 @@ object Libs {
     const val MATERIAL = "com.google.android.material:material"
     const val NAVIGATION_FRAGMENT_KTX = "androidx.navigation:navigation-fragment-ktx"
     const val NAVIGATION_UI_KTX = "androidx.navigation:navigation-ui-ktx"
+    const val PAGING = "androidx.paging:paging-runtime"
     const val RECYCLER_VIEW = "androidx.recyclerview:recyclerview"
     const val ROOM = "androidx.room:room-runtime"
     const val ROOM_COMPILER = "androidx.room:room-compiler"

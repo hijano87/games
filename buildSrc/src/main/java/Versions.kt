@@ -18,6 +18,7 @@ object Versions {
     const val LIFECYCLE = "2.4.1"
     const val MATERIAL = "1.5.0"
     const val NAVIGATION = "2.4.1"
+    const val PAGING = "3.1.1"
     const val RECYCLER_VIEW = "1.2.1"
     const val ROOM = "2.4.2"
 
