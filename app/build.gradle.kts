@@ -57,6 +57,8 @@ dependencies {
     implementation("${Libs.CONSTRAINT_LAYOUT}:${Versions.CONSTRAINT_LAYOUT}")
     implementation("${Libs.CORE_KTX}:${Versions.CORE_KTX}")
     implementation("${Libs.COROUTINES_ANDROID}:${Versions.COROUTINES}")
+    implementation("${Libs.GLIDE}:${Versions.GLIDE}")
+    kapt("${Libs.GLIDE_COMPILER}:${Versions.GLIDE}")
     implementation("${Libs.HILT_ANDROID}:${Versions.HILT}")
     kapt("${Libs.HILT_COMPILER}:${Versions.HILT}")
     implementation("${Libs.LIFECYCLE_RUNTIME_KTX}:${Versions.LIFECYCLE}")

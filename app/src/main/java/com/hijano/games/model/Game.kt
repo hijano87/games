@@ -1,3 +1,3 @@
 package com.hijano.games.model
 
-data class Game(val id: Long, val image: String, val name: String)
+data class Game(val id: Long, val name: String, val imageUrl: String?)

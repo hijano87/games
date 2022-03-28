@@ -8,6 +8,10 @@ data class GameResponse(
     val id: Long,
     val name: String,
     val cover: Long?
-) {
-    fun toGame() = Game(id, cover?.toString().orEmpty(), name)
-}
+)
+
+fun GameResponse.toGame(imageUrl: String? = null): Game = Game(
+    id = id,
+    name = name,
+    imageUrl = imageUrl
+)
