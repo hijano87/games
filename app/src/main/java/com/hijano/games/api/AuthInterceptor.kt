@@ -1,4 +1,4 @@
-package com.hijano.games.data
+package com.hijano.games.api
 
 import com.hijano.games.BuildConfig
 import okhttp3.Interceptor

@@ -1,7 +1,7 @@
 package com.hijano.games.di
 
 import com.hijano.games.BuildConfig
-import com.hijano.games.data.AuthInterceptor
+import com.hijano.games.api.AuthInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

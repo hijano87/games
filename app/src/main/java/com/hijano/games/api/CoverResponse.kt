@@ -1,4 +1,4 @@
-package com.hijano.games.data
+package com.hijano.games.api
 
 import com.api.igdb.utils.ImageSize
 import com.api.igdb.utils.ImageType

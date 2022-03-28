@@ -1,6 +1,6 @@
 package com.hijano.games.di
 
-import com.hijano.games.data.GamesService
+import com.hijano.games.api.GamesService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

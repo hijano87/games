@@ -1,4 +1,4 @@
-package com.hijano.games.data
+package com.hijano.games.api
 
 import com.hijano.games.model.Game
 import com.squareup.moshi.JsonClass

@@ -4,6 +4,10 @@ import com.api.igdb.apicalypse.APICalypse
 import com.api.igdb.utils.ImageSize
 import com.api.igdb.utils.ImageType
 import com.api.igdb.utils.imageBuilder
+import com.hijano.games.api.GamesService
+import com.hijano.games.api.getCovers
+import com.hijano.games.api.toGame
+import com.hijano.games.api.toImageUrl
 import com.hijano.games.model.Game
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

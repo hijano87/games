@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Games</string>
+    <string name="game_image_content_description">Game image</string>
 </resources>
