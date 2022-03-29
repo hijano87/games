@@ -17,6 +17,7 @@ object Libs {
     const val ROOM_COMPILER = "androidx.room:room-compiler"
     const val ROOM_KTX = "androidx.room:room-ktx"
     const val ROOM_PAGING = "androidx.room:room-paging"
+    const val SWIPE_REFRESH_LAYOUT = "androidx.swiperefreshlayout:swiperefreshlayout"
 
     const val RETROFIT = "com.squareup.retrofit2:retrofit"
     const val CONVERTER_SCALARS = "com.squareup.retrofit2:converter-scalars"

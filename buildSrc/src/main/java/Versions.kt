@@ -21,6 +21,7 @@ object Versions {
     const val PAGING = "3.1.1"
     const val RECYCLER_VIEW = "1.2.1"
     const val ROOM = "2.4.2"
+    const val SWIPE_REFRESH_LAYOUT = "1.1.0"
 
     const val LOGGING_INTERCEPTOR = "4.9.3"
     const val MOSHI = "1.13.0"

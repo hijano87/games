@@ -68,6 +68,7 @@ dependencies {
     implementation("${Libs.NAVIGATION_UI_KTX}:${Versions.NAVIGATION}")
     implementation("${Libs.PAGING}:${Versions.PAGING}")
     implementation("${Libs.RECYCLER_VIEW}:${Versions.RECYCLER_VIEW}")
+    implementation("${Libs.SWIPE_REFRESH_LAYOUT}:${Versions.SWIPE_REFRESH_LAYOUT}")
 
     implementation("${Libs.ROOM}:${Versions.ROOM}")
     kapt("${Libs.ROOM_COMPILER}:${Versions.ROOM}")
