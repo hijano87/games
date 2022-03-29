@@ -21,7 +21,12 @@ class GamesFragment : Fragment(R.layout.fragment_games) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = GamesAdapter()
         val binding = FragmentGamesBinding.bind(view)
-        binding.games.adapter = adapter
+
+        binding.games.adapter = adapter.withLoadStateHeaderAndFooter(
+            GameLoadStateAdapter { adapter.retry() },
+            GameLoadStateAdapter { adapter.retry() }
+        )
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
