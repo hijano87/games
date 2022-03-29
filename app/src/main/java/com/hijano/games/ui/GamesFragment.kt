@@ -2,6 +2,7 @@ package com.hijano.games.ui
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -41,6 +42,9 @@ class GamesFragment : Fragment(R.layout.fragment_games) {
                             ?.refresh
                             ?.takeIf { it is LoadState.Error && gamesAdapter.itemCount > 0 }
                             ?: loadState.prepend
+
+                        binding.empty.isVisible =
+                            loadState.refresh is LoadState.NotLoading && gamesAdapter.itemCount == 0
                     }
                 }
             }

@@ -3,4 +3,5 @@
     <string name="game_image_content_description">Game image</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="retry">Retry</string>
+    <string name="no_games_no_party">No games, no party!</string>
 </resources>
