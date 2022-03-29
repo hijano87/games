@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class GameEntity(
     @PrimaryKey
     val id: Long,
-    val name: String
+    val name: String,
+    val image: String?
 )

@@ -1,6 +1,7 @@
 package com.hijano.games.api
 
 import com.api.igdb.apicalypse.APICalypse
+import com.api.igdb.apicalypse.Sort
 import retrofit2.http.Body
 import retrofit2.http.POST
 
@@ -12,11 +13,22 @@ interface GamesService {
     suspend fun getCovers(@Body query: String): List<CoverResponse>
 }
 
+suspend fun GamesService.getGames(page: Int, pageSize: Int): List<GameResponse> {
+    return getGames(
+        APICalypse()
+            .fields("id,name")
+            .limit(pageSize)
+            .offset(page * pageSize)
+            .sort("id", Sort.DESCENDING)
+            .buildQuery()
+    )
+}
+
 suspend fun GamesService.getCovers(ids: List<Long>): List<CoverResponse> {
     return getCovers(
         APICalypse()
-            .fields("id,image_id")
-            .where("id = ${ids.joinToString(prefix = "(", postfix = ")")}")
+            .fields("id,game,image_id")
+            .where("game = ${ids.joinToString(prefix = "(", postfix = ")")}")
             .buildQuery()
     )
 }

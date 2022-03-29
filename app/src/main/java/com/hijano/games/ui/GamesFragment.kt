@@ -10,6 +10,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.hijano.games.R
 import com.hijano.games.databinding.FragmentGamesBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -25,7 +26,7 @@ class GamesFragment : Fragment(R.layout.fragment_games) {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.games.collect { games ->
-                        adapter.submitList(games)
+                        adapter.submitData(games)
                     }
                 }
             }

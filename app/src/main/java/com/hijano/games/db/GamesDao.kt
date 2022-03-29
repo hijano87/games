@@ -11,7 +11,7 @@ interface GamesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(games: List<GameEntity>)
 
-    @Query("SELECT * FROM games")
+    @Query("SELECT * FROM games ORDER BY id DESC")
     fun getGames(): PagingSource<Int, GameEntity>
 
     @Query("DELETE FROM games")

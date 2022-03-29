@@ -1,16 +1,11 @@
 package com.hijano.games.api
 
-import com.api.igdb.utils.ImageSize
-import com.api.igdb.utils.ImageType
-import com.api.igdb.utils.imageBuilder
+import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class CoverResponse(
     val id: Long,
-    val image_id: String
+    val game: Long,
+    @Json(name = "image_id") val imageId: String
 )
-
-fun CoverResponse.toImageUrl(size: ImageSize, type: ImageType): String {
-    return imageBuilder(image_id, size, type)
-}

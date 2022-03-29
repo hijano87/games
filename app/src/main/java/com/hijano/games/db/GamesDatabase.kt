@@ -6,7 +6,6 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [
-        CoverEntity::class,
         GameEntity::class,
         RemoteKeysEntity::class
     ],
@@ -14,4 +13,5 @@ import androidx.room.RoomDatabase
 )
 abstract class GamesDatabase : RoomDatabase() {
     abstract fun gamesDao(): GamesDao
+    abstract fun remoteKeysDao(): RemoteKeysDao
 }
