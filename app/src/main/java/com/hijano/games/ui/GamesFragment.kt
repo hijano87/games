@@ -28,6 +28,7 @@ class GamesFragment : Fragment(R.layout.fragment_games) {
         binding.games.adapter = gamesAdapter.withLoadStateHeaderAndFooter(
             headerAdapter, footerAdapter
         )
+        binding.retry.setOnClickListener { gamesAdapter.retry() }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -51,6 +52,9 @@ class GamesFragment : Fragment(R.layout.fragment_games) {
 
                         binding.progress.isVisible =
                             loadState.mediator?.refresh is LoadState.Loading
+
+                        binding.retry.isVisible = loadState.mediator?.refresh is LoadState.Error
+                                && gamesAdapter.itemCount == 0
                     }
                 }
             }
