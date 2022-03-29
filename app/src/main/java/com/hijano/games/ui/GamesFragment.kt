@@ -48,6 +48,9 @@ class GamesFragment : Fragment(R.layout.fragment_games) {
 
                         binding.games.isVisible = loadState.source.refresh is LoadState.NotLoading
                                 || loadState.mediator?.refresh is LoadState.NotLoading
+
+                        binding.progress.isVisible =
+                            loadState.mediator?.refresh is LoadState.Loading
                     }
                 }
             }
