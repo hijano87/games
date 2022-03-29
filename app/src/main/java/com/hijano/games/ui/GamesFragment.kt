@@ -7,10 +7,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.paging.LoadState
 import com.hijano.games.R
 import com.hijano.games.databinding.FragmentGamesBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -19,19 +19,28 @@ class GamesFragment : Fragment(R.layout.fragment_games) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = GamesAdapter()
         val binding = FragmentGamesBinding.bind(view)
+        val gamesAdapter = GamesAdapter()
+        val headerAdapter = GameLoadStateAdapter { gamesAdapter.retry() }
+        val footerAdapter = GameLoadStateAdapter { gamesAdapter.retry() }
 
-        binding.games.adapter = adapter.withLoadStateHeaderAndFooter(
-            GameLoadStateAdapter { adapter.retry() },
-            GameLoadStateAdapter { adapter.retry() }
+        binding.games.adapter = gamesAdapter.withLoadStateHeaderAndFooter(
+            headerAdapter, footerAdapter
         )
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.games.collect { games ->
-                        adapter.submitData(games)
+                        gamesAdapter.submitData(games)
+                    }
+                }
+                launch {
+                    gamesAdapter.loadStateFlow.collect { loadState ->
+                        headerAdapter.loadState = loadState.mediator
+                            ?.refresh
+                            ?.takeIf { it is LoadState.Error && gamesAdapter.itemCount > 0 }
+                            ?: loadState.prepend
                     }
                 }
             }
