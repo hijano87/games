@@ -29,6 +29,7 @@ suspend fun GamesService.getCovers(ids: List<Long>): List<CoverResponse> {
         APICalypse()
             .fields("id,game,image_id")
             .where("game = ${ids.joinToString(prefix = "(", postfix = ")")}")
+            .limit(ids.size)
             .buildQuery()
     )
 }
