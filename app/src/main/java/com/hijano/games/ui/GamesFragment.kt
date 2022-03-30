@@ -9,6 +9,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.paging.LoadState
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.hijano.games.R
 import com.hijano.games.databinding.FragmentGamesBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,7 +25,9 @@ class GamesFragment : Fragment(R.layout.fragment_games) {
         val binding = FragmentGamesBinding.bind(view)
         val gamesAdapter = GamesAdapter()
         val footerAdapter = GameLoadStateAdapter { gamesAdapter.retry() }
+        val dividerItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
 
+        binding.games.addItemDecoration(dividerItemDecoration)
         binding.games.adapter = gamesAdapter.withLoadStateFooter(footerAdapter)
         binding.retry.setOnClickListener { gamesAdapter.retry() }
         binding.swipe.setOnRefreshListener { gamesAdapter.refresh() }
