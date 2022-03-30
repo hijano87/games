@@ -12,6 +12,7 @@ import androidx.paging.LoadState
 import com.hijano.games.R
 import com.hijano.games.databinding.FragmentGamesBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -22,13 +23,11 @@ class GamesFragment : Fragment(R.layout.fragment_games) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentGamesBinding.bind(view)
         val gamesAdapter = GamesAdapter()
-        val headerAdapter = GameLoadStateAdapter { gamesAdapter.retry() }
         val footerAdapter = GameLoadStateAdapter { gamesAdapter.retry() }
 
-        binding.games.adapter = gamesAdapter.withLoadStateHeaderAndFooter(
-            headerAdapter, footerAdapter
-        )
+        binding.games.adapter = gamesAdapter.withLoadStateFooter(footerAdapter)
         binding.retry.setOnClickListener { gamesAdapter.retry() }
+        binding.swipe.setOnRefreshListener { gamesAdapter.refresh() }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -39,22 +38,19 @@ class GamesFragment : Fragment(R.layout.fragment_games) {
                 }
                 launch {
                     gamesAdapter.loadStateFlow.collect { loadState ->
-                        headerAdapter.loadState = loadState.mediator
-                            ?.refresh
-                            ?.takeIf { it is LoadState.Error && gamesAdapter.itemCount > 0 }
-                            ?: loadState.prepend
-
                         binding.empty.isVisible =
                             loadState.refresh is LoadState.NotLoading && gamesAdapter.itemCount == 0
 
                         binding.games.isVisible = loadState.source.refresh is LoadState.NotLoading
                                 || loadState.mediator?.refresh is LoadState.NotLoading
 
-                        binding.progress.isVisible =
+                        binding.swipe.isRefreshing =
                             loadState.mediator?.refresh is LoadState.Loading
 
-                        binding.retry.isVisible = loadState.mediator?.refresh is LoadState.Error
+                        val isInitialError = loadState.mediator?.refresh is LoadState.Error
                                 && gamesAdapter.itemCount == 0
+                        binding.error.isVisible = isInitialError
+                        binding.retry.isVisible = isInitialError
                     }
                 }
             }
