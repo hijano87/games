@@ -7,14 +7,13 @@ import com.api.igdb.utils.ImageSize
 import com.api.igdb.utils.ImageType
 import com.api.igdb.utils.imageBuilder
 import com.bumptech.glide.Glide
-import com.hijano.games.data.GamesRepository
 import com.hijano.games.databinding.ItemGameBinding
 import com.hijano.games.model.Game
 
 class GameViewHolder(private val binding: ItemGameBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(game: Game) {
         Glide.with(itemView)
-            .load(imageBuilder(game.imageUrl ?: "nocover", ImageSize.THUMB, ImageType.WEBP))
+            .load(imageBuilder(game.imageUrl ?: "nocover", ImageSize.COVER_SMALL, ImageType.WEBP))
             .into(binding.image)
         binding.name.text = game.name
     }
