@@ -32,7 +32,7 @@ class GamesFragment : Fragment(R.layout.fragment_games) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
-                    viewModel.games.collect { games ->
+                    viewModel.games.collectLatest { games ->
                         gamesAdapter.submitData(games)
                     }
                 }
