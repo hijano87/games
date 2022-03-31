@@ -4,6 +4,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
+import android.widget.ImageView
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
 import androidx.core.view.isVisible
@@ -19,9 +20,11 @@ import com.api.igdb.utils.imageBuilder
 import com.bumptech.glide.Glide
 import com.hijano.games.R
 import com.hijano.games.databinding.FragmentDetailsBinding
+import com.hijano.games.model.Game
 import com.hijano.games.model.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import com.google.android.material.R as MaterialR
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment(R.layout.fragment_details) {
@@ -34,37 +37,34 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
-                    viewModel.game.collect {
-                        binding.error.isVisible = it is Resource.Error
-                        binding.retry.isVisible = it is Resource.Error
-                        binding.progress.isVisible = it is Resource.Loading
-
-                        if (it is Resource.Success) {
-                            binding.collapsingToolbarLayout.title = it.data.name
-                            binding.summary.text = it.data.summary
-                            binding.summary.isVisible = it.data.summary != null
-                            binding.storyline.text = it.data.storyline
-                            binding.storyline.isVisible = it.data.storyline != null
-                            Glide.with(this@DetailsFragment)
-                                .load(
-                                    imageBuilder(
-                                        it.data.imageId ?: "nocover",
-                                        ImageSize.SCREENSHOT_MEDIUM,
-                                        ImageType.PNG
-                                    )
-                                )
-                                .placeholder(
-                                    ColorDrawable(
-                                        resolveColor(com.google.android.material.R.attr.colorSurface)
-                                    )
-                                )
-                                .centerCrop()
-                                .into(binding.image)
-                        }
-                    }
+                    viewModel.game.collect { game -> binding.bindState(game) }
                 }
             }
         }
+    }
+
+    private fun FragmentDetailsBinding.bindState(resource: Resource<Game>) {
+        progress.isVisible = resource is Resource.Loading
+        errorGroup.isVisible = resource is Resource.Error
+        detailsGroup.isVisible = (resource is Resource.Success)
+        (resource as? Resource.Success)?.data?.let { game -> bindDetails(game) }
+    }
+
+    private fun FragmentDetailsBinding.bindDetails(game: Game) {
+        collapsingToolbarLayout.title = game.name
+        summary.text = game.summary
+        summary.isVisible = game.summary != null
+        storyline.text = game.storyline
+        storyline.isVisible = game.storyline != null
+        image.bindImage(game.imageId)
+    }
+
+    private fun ImageView.bindImage(imageId: String?) {
+        Glide.with(this@DetailsFragment)
+            .load(imageBuilder(imageId ?: "nocover", ImageSize.SCREENSHOT_MEDIUM, ImageType.PNG))
+            .placeholder(ColorDrawable(resolveColor(MaterialR.attr.colorSurface)))
+            .centerCrop()
+            .into(this)
     }
 
     @ColorInt
