@@ -10,7 +10,8 @@ data class GameEntity(
     val id: Long,
     val name: String,
     val image: String?,
+    val storyline: String?,
     val summary: String?
 )
 
-fun GameEntity.toGame(): Game = Game(id, name, image, summary)
+fun GameEntity.toGame(): Game = Game(id, name, image, storyline, summary)

@@ -43,6 +43,8 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                             binding.collapsingToolbarLayout.title = it.data.name
                             binding.summary.text = it.data.summary
                             binding.summary.isVisible = it.data.summary != null
+                            binding.storyline.text = it.data.storyline
+                            binding.storyline.isVisible = it.data.storyline != null
                             Glide.with(this@DetailsFragment)
                                 .load(
                                     imageBuilder(

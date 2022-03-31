@@ -59,6 +59,7 @@ class GamesRemoteMediator(
                             game.id,
                             game.name,
                             covers.find { cover -> cover.game == game.id }?.imageId,
+                            game.storyline,
                             game.summary
                         )
                     }

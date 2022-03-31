@@ -16,7 +16,7 @@ interface GamesService {
 suspend fun GamesService.getGames(page: Int, pageSize: Int): List<GameResponse> {
     return getGames(
         APICalypse()
-            .fields("id,name,summary")
+            .fields("id,name,storyline,summary")
             .limit(pageSize)
             .offset(page * pageSize)
             .sort("id", Sort.DESCENDING)
@@ -27,7 +27,7 @@ suspend fun GamesService.getGames(page: Int, pageSize: Int): List<GameResponse> 
 suspend fun GamesService.getGameById(id: Long): GameResponse? {
     return getGames(
         APICalypse()
-            .fields("id, name,summary")
+            .fields("id, name,storyline,summary")
             .limit(1)
             .where("id = $id")
             .buildQuery()
