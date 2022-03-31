@@ -27,7 +27,7 @@ class GamesRepository @Inject constructor(
             pagingSourceFactory = { database.gamesDao().getGames() }
         ).flow.map { pagingData ->
             pagingData.map { gameEntity ->
-                Game(gameEntity.id, gameEntity.name, gameEntity.image)
+                Game(gameEntity.id, gameEntity.name, gameEntity.image, gameEntity.summary)
             }
         }
     }
@@ -40,8 +40,10 @@ class GamesRepository @Inject constructor(
         try {
             gamesService.getGameById(id)?.let { game ->
                 val cover = gamesService.getCoverForGame(id)
-                val serviceGame = Game(game.id, game.name, cover?.imageId)
-                database.gamesDao().insert(GameEntity(serviceGame.id, game.name, cover?.imageId))
+                val serviceGame = Game(game.id, game.name, cover?.imageId, game.summary)
+                database.gamesDao().insert(
+                    GameEntity(serviceGame.id, game.name, cover?.imageId, game.summary)
+                )
             }
         } catch (throwable: Throwable) {
             if (databaseGame == null) emit(Resource.Error)

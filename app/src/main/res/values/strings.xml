@@ -5,4 +5,5 @@
     <string name="something_went_wrong_retry">Something went wrong.\nSwipe to refresh or press the button to retry.</string>
     <string name="retry">Retry</string>
     <string name="no_games_no_party">No games, no party!</string>
+    <string name="game_details">Game details</string>
 </resources>

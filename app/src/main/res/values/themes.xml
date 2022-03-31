@@ -40,5 +40,8 @@
         <item name="textAppearanceBodyLarge">@style/TextAppearance.Games.BodyLarge</item>
         <item name="textAppearanceBodyMedium">@style/TextAppearance.Games.BodyMedium</item>
         <item name="textAppearanceBodySmall">@style/TextAppearance.Games.BodySmall</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

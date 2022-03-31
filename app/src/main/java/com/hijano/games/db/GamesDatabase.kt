@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase
         GameEntity::class,
         RemoteKeysEntity::class
     ],
-    version = 1
+    version = 2
 )
 abstract class GamesDatabase : RoomDatabase() {
     abstract fun gamesDao(): GamesDao

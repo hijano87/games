@@ -6,5 +6,6 @@ import com.squareup.moshi.JsonClass
 data class GameResponse(
     val id: Long,
     val name: String,
-    val cover: Long?
+    val cover: Long?,
+    val summary: String?
 )

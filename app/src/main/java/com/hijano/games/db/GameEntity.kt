@@ -9,7 +9,8 @@ data class GameEntity(
     @PrimaryKey
     val id: Long,
     val name: String,
-    val image: String?
+    val image: String?,
+    val summary: String?
 )
 
-fun GameEntity.toGame(): Game = Game(id, name, image)
+fun GameEntity.toGame(): Game = Game(id, name, image, summary)
