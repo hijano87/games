@@ -40,11 +40,9 @@ class GamesRepository @Inject constructor(
         try {
             gamesService.getGameById(id)?.let { game ->
                 val cover = gamesService.getCoverForGame(id)
-                val serviceGame =
-                    Game(game.id, game.name, cover?.imageId, game.storyline, game.summary)
                 database.gamesDao().insert(
                     GameEntity(
-                        serviceGame.id,
+                        game.id,
                         game.name,
                         cover?.imageId,
                         game.storyline,
