@@ -25,11 +25,7 @@ class GamesRepository @Inject constructor(
             config = PagingConfig(pageSize = PAGE_SIZE, enablePlaceholders = false),
             remoteMediator = GamesRemoteMediator(database, gamesService),
             pagingSourceFactory = { database.gamesDao().getGames() }
-        ).flow.map { pagingData ->
-            pagingData.map { gameEntity ->
-                Game(gameEntity.id, gameEntity.name, gameEntity.image, gameEntity.storyline, gameEntity.summary)
-            }
-        }
+        ).flow.map { pagingData -> pagingData.map(GameEntity::toGame) }
     }
 
     fun getGameById(id: Long) : Flow<Resource<Game>> = flow {
