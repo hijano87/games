@@ -5,9 +5,13 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.hijano.games.model.Game
 
-class GamesAdapter : PagingDataAdapter<Game, GameViewHolder>(GAMES_COMPARATOR) {
+class GamesAdapter(
+    private val onItemClick: (game: Game) -> Unit
+) : PagingDataAdapter<Game, GameViewHolder>(GAMES_COMPARATOR) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
-        return GameViewHolder.from(parent)
+        return GameViewHolder.from(parent) { position ->
+            getItem(position)?.let { onItemClick(it) }
+        }
     }
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {

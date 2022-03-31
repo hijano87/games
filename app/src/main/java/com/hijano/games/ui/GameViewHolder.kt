@@ -14,7 +14,7 @@ import com.hijano.games.model.Game
 class GameViewHolder(private val binding: ItemGameBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(game: Game) {
         Glide.with(itemView)
-            .load(imageBuilder(game.imageUrl ?: "nocover", ImageSize.COVER_SMALL, ImageType.PNG))
+            .load(imageBuilder(game.imageId ?: "nocover", ImageSize.COVER_SMALL, ImageType.PNG))
             .placeholder(R.drawable.ic_baseline_image_24)
             .error(R.drawable.ic_baseline_error_24)
             .into(binding.image)
@@ -22,14 +22,16 @@ class GameViewHolder(private val binding: ItemGameBinding) : RecyclerView.ViewHo
     }
 
     companion object {
-        fun from(parent: ViewGroup): GameViewHolder {
+        fun from(parent: ViewGroup, onItemClick: (Int) -> Unit): GameViewHolder {
             return GameViewHolder(
                 ItemGameBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
                 )
-            )
+            ).apply {
+                this.binding.root.setOnClickListener { onItemClick(bindingAdapterPosition) }
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.hijano.games.R
@@ -23,7 +24,11 @@ class GamesFragment : Fragment(R.layout.fragment_games) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentGamesBinding.bind(view)
-        val gamesAdapter = GamesAdapter()
+        val gamesAdapter = GamesAdapter {
+            findNavController().navigate(
+                GamesFragmentDirections.actionGamesFragmentToDetailsFragment(it.id)
+            )
+        }
         val footerAdapter = GameLoadStateAdapter { gamesAdapter.retry() }
         val dividerItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
 

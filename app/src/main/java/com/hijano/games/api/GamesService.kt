@@ -24,6 +24,16 @@ suspend fun GamesService.getGames(page: Int, pageSize: Int): List<GameResponse> 
     )
 }
 
+suspend fun GamesService.getGameById(id: Long): GameResponse? {
+    return getGames(
+        APICalypse()
+            .fields("id, name")
+            .limit(1)
+            .where("id = $id")
+            .buildQuery()
+    ).firstOrNull()
+}
+
 suspend fun GamesService.getCovers(ids: List<Long>): List<CoverResponse> {
     return getCovers(
         APICalypse()
@@ -32,4 +42,14 @@ suspend fun GamesService.getCovers(ids: List<Long>): List<CoverResponse> {
             .limit(ids.size)
             .buildQuery()
     )
+}
+
+suspend fun GamesService.getCoverForGame(gameId: Long): CoverResponse? {
+    return getCovers(
+        APICalypse()
+            .fields("id,game,image_id")
+            .where("game = $gameId")
+            .limit(1)
+            .buildQuery()
+    ).firstOrNull()
 }

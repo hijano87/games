@@ -1,20 +1,23 @@
 package com.hijano.games.data
 
 import androidx.paging.*
-import com.api.igdb.apicalypse.APICalypse
-import com.api.igdb.utils.ImageSize
-import com.api.igdb.utils.ImageType
-import com.api.igdb.utils.imageBuilder
 import com.hijano.games.api.GamesService
+import com.hijano.games.api.getCoverForGame
+import com.hijano.games.api.getGameById
+import com.hijano.games.db.GameEntity
 import com.hijano.games.db.GamesDatabase
+import com.hijano.games.db.toGame
+import com.hijano.games.di.IoDispatcher
 import com.hijano.games.model.Game
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import com.hijano.games.model.Resource
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 class GamesRepository @Inject constructor(
     private val gamesService: GamesService,
-    private val database: GamesDatabase
+    private val database: GamesDatabase,
+    @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) {
     fun getGames(): Flow<PagingData<Game>> {
         @OptIn(ExperimentalPagingApi::class)
@@ -28,6 +31,28 @@ class GamesRepository @Inject constructor(
             }
         }
     }
+
+    fun getGameById(id: Long) : Flow<Resource<Game>> = flow {
+        emit(Resource.Loading)
+        val databaseGame = database.gamesDao().getGameById(id).map { it.toGame() }.firstOrNull()
+        databaseGame?.let { emit(Resource.Success(it)) }
+
+        try {
+            gamesService.getGameById(id)?.let { game ->
+                val cover = gamesService.getCoverForGame(id)
+                val serviceGame = Game(game.id, game.name, cover?.imageId)
+                database.gamesDao().insert(GameEntity(serviceGame.id, game.name, cover?.imageId))
+            }
+        } catch (throwable: Throwable) {
+            if (databaseGame == null) emit(Resource.Error)
+        }
+
+        emitAll(
+            database.gamesDao().getGameById(id)
+                .distinctUntilChanged()
+                .map { Resource.Success(it.toGame()) }
+        )
+    }.flowOn(dispatcher)
 
     companion object {
         private const val PAGE_SIZE = 30
