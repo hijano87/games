@@ -1,4 +1,4 @@
-package com.hijano.games.ui
+package com.hijano.games.ui.games
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
