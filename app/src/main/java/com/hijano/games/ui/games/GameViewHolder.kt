@@ -11,7 +11,15 @@ import com.hijano.games.R
 import com.hijano.games.databinding.ItemGameBinding
 import com.hijano.games.model.Game
 
-class GameViewHolder(private val binding: ItemGameBinding) : RecyclerView.ViewHolder(binding.root) {
+class GameViewHolder(
+    private val binding: ItemGameBinding,
+    private val onItemClick: (Int) -> Unit
+) : RecyclerView.ViewHolder(binding.root) {
+
+    init {
+        binding.root.setOnClickListener { onItemClick(bindingAdapterPosition) }
+    }
+
     fun bind(game: Game) {
         Glide.with(itemView)
             .load(imageBuilder(game.imageId ?: "nocover", ImageSize.COVER_SMALL, ImageType.PNG))
@@ -28,10 +36,9 @@ class GameViewHolder(private val binding: ItemGameBinding) : RecyclerView.ViewHo
                     LayoutInflater.from(parent.context),
                     parent,
                     false
-                )
-            ).apply {
-                this.binding.root.setOnClickListener { onItemClick(bindingAdapterPosition) }
-            }
+                ),
+                onItemClick
+            )
         }
     }
 }
