@@ -1,5 +1,6 @@
 package com.hijano.games.ui.details
 
+import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
@@ -8,7 +9,6 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.AttrRes
-import androidx.annotation.ColorInt
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -83,15 +83,12 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     private fun ImageView.bindImage(imageId: String?) {
         Glide.with(this@DetailsFragment)
             .load(imageBuilder(imageId ?: "nocover", ImageSize.SCREENSHOT_MEDIUM, ImageType.PNG))
-            .placeholder(ColorDrawable(resolveColor(MaterialR.attr.colorSurface)))
+            .placeholder(ColorDrawable(context.resolveAttr(MaterialR.attr.colorSurface)))
             .centerCrop()
             .into(this)
     }
 
-    @ColorInt
-    private fun resolveColor(@AttrRes color: Int): Int {
-        return TypedValue().apply {
-            requireContext().theme.resolveAttribute(color, this, true)
-        }.data
-    }
+    private fun Context.resolveAttr(@AttrRes attr: Int): Int = TypedValue().apply {
+        theme.resolveAttribute(attr, this, true)
+    }.data
 }
