@@ -43,7 +43,7 @@ class GamesFragment : Fragment(R.layout.fragment_games) {
                     }
                 }
                 launch {
-                    gamesAdapter.loadStateFlow.collect { loadState ->
+                    gamesAdapter.loadStateFlow.collectLatest { loadState ->
                         val itemCount = gamesAdapter.itemCount
                         binding.empty.isVisible = isEmptyVisible(loadState, itemCount)
                         binding.games.isVisible = isListVisible(loadState)
