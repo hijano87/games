@@ -8,6 +8,7 @@ object Versions {
 
     const val AGP = "7.1.2"
     const val KOTLIN = "1.6.0"
+    const val KTLINT_GRADLE = "10.2.1"
 
     const val APP_COMPAT = "1.4.1"
     const val CONSTRAINT_LAYOUT = "2.1.3"
