@@ -47,7 +47,7 @@ class GamesRepository @Inject constructor(
                 )
             }
         } catch (throwable: Throwable) {
-            if (databaseGame == null) emit(Resource.Error)
+            emit(Resource.Error)
         }
 
         emitAll(
