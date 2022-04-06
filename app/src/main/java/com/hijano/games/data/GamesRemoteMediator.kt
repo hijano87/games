@@ -8,7 +8,9 @@ import androidx.room.withTransaction
 import com.hijano.games.api.GamesService
 import com.hijano.games.api.getCovers
 import com.hijano.games.api.getGames
-import com.hijano.games.db.*
+import com.hijano.games.db.GameEntity
+import com.hijano.games.db.GamesDatabase
+import com.hijano.games.db.RemoteKeysEntity
 
 @OptIn(ExperimentalPagingApi::class)
 class GamesRemoteMediator(

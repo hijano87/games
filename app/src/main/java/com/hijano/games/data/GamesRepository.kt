@@ -1,6 +1,10 @@
 package com.hijano.games.data
 
-import androidx.paging.*
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.map
 import com.hijano.games.api.GamesService
 import com.hijano.games.api.getCoverForGame
 import com.hijano.games.api.getGameById
@@ -11,7 +15,13 @@ import com.hijano.games.di.IoDispatcher
 import com.hijano.games.model.Game
 import com.hijano.games.model.Resource
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class GamesRepository @Inject constructor(
@@ -28,7 +38,7 @@ class GamesRepository @Inject constructor(
         ).flow.map { pagingData -> pagingData.map(GameEntity::toGame) }
     }
 
-    fun getGameById(id: Long) : Flow<Resource<Game>> = flow {
+    fun getGameById(id: Long): Flow<Resource<Game>> = flow {
         emit(Resource.Loading)
         val databaseGame = database.gamesDao().getGameById(id).map { it.toGame() }.firstOrNull()
         databaseGame?.let { emit(Resource.Success(it)) }

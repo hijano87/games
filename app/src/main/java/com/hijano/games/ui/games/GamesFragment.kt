@@ -66,8 +66,8 @@ class GamesFragment : Fragment(R.layout.fragment_games) {
     }
 
     private fun isListVisible(loadState: CombinedLoadStates): Boolean {
-        return loadState.source.refresh is LoadState.NotLoading
-                || loadState.mediator?.refresh is LoadState.NotLoading
+        return loadState.source.refresh is LoadState.NotLoading ||
+            loadState.mediator?.refresh is LoadState.NotLoading
     }
 
     private fun isLoadingVisible(loadState: CombinedLoadStates): Boolean {
