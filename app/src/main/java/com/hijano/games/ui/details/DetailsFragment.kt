@@ -2,12 +2,10 @@ package com.hijano.games.ui.details
 
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.annotation.AttrRes
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -20,6 +18,7 @@ import com.api.igdb.utils.ImageSize
 import com.api.igdb.utils.ImageType
 import com.api.igdb.utils.imageBuilder
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import com.hijano.games.R
 import com.hijano.games.databinding.FragmentDetailsBinding
 import com.hijano.games.model.Game
@@ -62,22 +61,15 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         image.bindImage(game.imageId)
     }
 
-    private fun showError(errorMessage: ErrorMessage) {
-        Toast.makeText(requireContext(), errorMessage.messageId, Toast.LENGTH_LONG)
-            .onHidden(errorMessage)
-            .show()
-    }
-
-    private fun Toast.onHidden(errorMessage: ErrorMessage): Toast = apply {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            addCallback(
-                object : Toast.Callback() {
-                    override fun onToastHidden() {
-                        viewModel.errorShown(errorMessage.id)
-                    }
-                }
-            )
+    private fun FragmentDetailsBinding.showError(errorMessage: ErrorMessage) {
+        val callback = object : Snackbar.Callback() {
+            override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
+                viewModel.errorShown(errorMessage.id)
+            }
         }
+        Snackbar.make(root, errorMessage.messageId, Snackbar.LENGTH_SHORT)
+            .addCallback(callback)
+            .show()
     }
 
     private fun ImageView.bindImage(imageId: String?) {
