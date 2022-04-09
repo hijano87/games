@@ -78,7 +78,7 @@ dependencies {
     implementation("${Libs.RETROFIT}:${Versions.RETROFIT}")
     implementation("${Libs.CONVERTER_SCALARS}:${Versions.RETROFIT}")
     implementation("${Libs.CONVERTER_MOSHI}:${Versions.RETROFIT}")
-    implementation("${Libs.MOSHI_KOTLIN}:${Versions.MOSHI}")
+    implementation("${Libs.MOSHI}:${Versions.MOSHI}")
     kapt("${Libs.MOSHI_KOTLIN_CODEGEN}:${Versions.MOSHI}")
     implementation("${Libs.LOGGING_INTERCEPTOR}:${Versions.LOGGING_INTERCEPTOR}")
 

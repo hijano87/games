@@ -22,7 +22,7 @@ object Libs {
     const val RETROFIT = "com.squareup.retrofit2:retrofit"
     const val CONVERTER_SCALARS = "com.squareup.retrofit2:converter-scalars"
     const val CONVERTER_MOSHI = "com.squareup.retrofit2:converter-moshi"
-    const val MOSHI_KOTLIN = "com.squareup.moshi:moshi-kotlin"
+    const val MOSHI = "com.squareup.moshi:moshi"
     const val MOSHI_KOTLIN_CODEGEN = "com.squareup.moshi:moshi-kotlin-codegen"
     const val LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor"
 
